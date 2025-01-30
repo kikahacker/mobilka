@@ -34,5 +34,7 @@ class ShoesUseCaseImpl(private val shoesRepository: ShoesRepository) :ShoesUseCa
 
     override fun returnShoes(shoesID: Int): ShoesResponse {
         val findShoes = shoesRepository.getAllShoes().find { it.shoesId==shoesID }
+        checkNotNull(findShoes)
+        return ShoesDtoToShoesResponse(findShoes)
     }
 }
