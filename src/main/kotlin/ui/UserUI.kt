@@ -25,6 +25,7 @@ class UserUI(private val userUseCase: UserUseCase) {
             password = password,)
         val user = userUseCase.authorize(authorizeRequest)
         println(userResponseToString(user))
+        userauto = user
     }
 
     fun registration(){
@@ -72,12 +73,8 @@ class UserUI(private val userUseCase: UserUseCase) {
         return printOutput.toString()
     }
     fun changePassword(){
-        checkNotNull(userauto){
+        checkNotNull(userauto) {
             "нет авторизации"
-        }
-        val email = readlnOrNull()
-        checkNotNull(email){
-            "Почта не должна отсутствовать"
         }
         println("Введите ваш пароль")
         val password = readlnOrNull()

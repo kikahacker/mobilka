@@ -33,10 +33,10 @@ class UserRepositoryImpl: UserRepository {
         return oldUser
     }
 
-    override fun getAllUsers(): List<UserDTO> = userList
+    override fun getAllUsers(): List<UserDTO> = userSource
 
     override fun findUsersById(userId: Int): UserDTO {
-        val findUser = userList.firstOrNull { it.userId == userId }
+        val findUser = userSource.firstOrNull { it.userId == userId }
         checkNotNull(findUser)
         return findUser
     }
